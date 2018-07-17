@@ -18,7 +18,7 @@ class WordRNN(object):
             embeddings = tf.get_variable("embeddings", initializer=init_embeddings)
             x_emb = tf.nn.embedding_lookup(embeddings, self.x)
 
-        with tf.variable_scope("birnn"):
+        with tf.variable_scope("rnn"):
             cell = rnn.BasicLSTMCell(self.num_hidden)
             rnn_outputs, _ = tf.nn.dynamic_rnn(
                 cell, x_emb, sequence_length=self.x_len, dtype=tf.float32)

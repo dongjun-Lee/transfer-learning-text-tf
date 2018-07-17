@@ -20,7 +20,7 @@ class LanguageModel(object):
             embeddings = tf.get_variable("embeddings", initializer=init_embeddings)
             lm_input_emb = tf.nn.embedding_lookup(embeddings, self.lm_input)
 
-        with tf.variable_scope("birnn"):
+        with tf.variable_scope("rnn"):
             cell = rnn.BasicLSTMCell(self.num_hidden)
             rnn_outputs, _ = tf.nn.dynamic_rnn(
                 cell, lm_input_emb, sequence_length=self.seq_len, dtype=tf.float32)

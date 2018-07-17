@@ -23,7 +23,7 @@ class AutoEncoder(object):
             encoder_input_emb = tf.nn.embedding_lookup(embeddings, self.x)
             decoder_input_emb = tf.nn.embedding_lookup(embeddings, self.decoder_input)
 
-        with tf.variable_scope("birnn"):
+        with tf.variable_scope("rnn"):
             encoder_cell = rnn.BasicLSTMCell(self.num_hidden)
 
             _, encoder_states = tf.nn.dynamic_rnn(
